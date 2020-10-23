@@ -5,7 +5,19 @@
       <mat-list cols="1" rowHeight="100px">
         <mat-list-item>
           <mat-form-field mat-list-item>
-            <mat-label>Username</mat-label>
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" formControlName="name">
+          </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-form-field mat-list-item>
+            <mat-label>Apellido</mat-label>
+            <input matInput type="text" formControlName="lastname">
+          </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-form-field mat-list-item>
+            <mat-label>Usuario</mat-label>
             <input matInput type="text" formControlName="username">
           </mat-form-field>
         </mat-list-item>
@@ -16,8 +28,7 @@
           </mat-form-field>
         </mat-list-item>
         <mat-list-item>
-          <button mat-raised-button color="primary" (click)="login()">Login</button>
-          <button mat-raised-button color="primary" routerLink="/register">Register</button>
+          <button mat-raised-button color="primary" (click)="save()">Guardar</button>
         </mat-list-item>
       </mat-list>
     </form>

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 import { LoginService } from 'src/app/services/login.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
@@ -25,22 +25,23 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
+      name: new FormControl(),
+      lastname: new FormControl(),
       username: new FormControl(),
       password: new FormControl()
     });
   }
 
-  login() {
-    this.loginService.login(this.form.value).subscribe({
-      complete: () => this.router.navigate(['/ships']),
-      error: () => this.showInvalidUserError()
+  save() {
+    this.loginService.register(this.form.value).subscribe({
+      complete: () => this.router.navigate(['/login']),
+      error: () => this.showDuplicatedUserError()
     });
   }
 
-  showInvalidUserError() { 
+  showDuplicatedUserError() { 
     const dialogRef = this.dialog.open(ErrorDialogComponent, {
-      data: { message: 'Usuario y/o contraseña invalido/s' }
+      data: { message: 'El usuario ya existe' }
     });
   }
-
 }
