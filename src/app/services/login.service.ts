@@ -13,12 +13,19 @@ export class LoginService {
     return localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
   }
 
-  login(user: User) {
+
+  get loggedInUser(): User {
+    return localStorage.getItem('loggedInUser') ? JSON.parse(localStorage.getItem('loggedInUser')) : null;
+  }
+
+  login(loginData: User) {
     return new Observable((observer) => {
       const users = this.users;
-      const userValid = !!users.filter(e => e.username === user.username && e.password === user.password).length;
+      const user = users.filter(e => e.username === loginData.username && e.password === loginData.password)[0];
 
-      if (userValid) {
+      if (user) {
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
+
         observer.complete();
       } else {
         observer.error('USUARIO Y/O CONTRASEÑA INVALIDO/S');
@@ -33,7 +40,7 @@ export class LoginService {
       const alreadyExists = !!users.filter(e => e.username === user.username).length;
   
       if (alreadyExists) {
-        observer.error('USER ALREADY EXISTS');
+        observer.error('NOMBRE DE USUARIO YA EXISTE');
       } else {
         users.push(user);
   

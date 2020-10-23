@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShipsService } from 'src/app/services/ships.service';
 
 @Component({
   selector: 'app-ships',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShipsComponent implements OnInit {
 
-  constructor() { }
+  public ships: any;
+
+  constructor(
+    private shipsService: ShipsService
+  ) { }
 
   ngOnInit() {
+    this.shipsService.getShips().subscribe(ships => {
+      this.ships = ships;
+    });
   }
 
 }

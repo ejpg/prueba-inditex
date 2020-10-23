@@ -16,6 +16,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ShipsComponent } from './pages/ships/ships.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,9 @@ import { ShipsComponent } from './pages/ships/ships.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatListModule,
     AppRoutingModule,
+    HttpClientModule,
+    MatListModule,
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
