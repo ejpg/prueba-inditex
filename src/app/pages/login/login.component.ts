@@ -2,21 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
     private loginService: LoginService,
-    private router: Router,
-    private dialog: MatDialog
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,9 +35,9 @@ export class LoginComponent implements OnInit {
   }
 
   showInvalidUserError() { 
-    const dialogRef = this.dialog.open(ErrorDialogComponent, {
-      data: { message: 'Usuario y/o contraseña invalido/s' }
-    });
+    // const dialogRef = this.dialog.open(ErrorDialogComponent, {
+    //   data: { message: 'Usuario y/o contraseña invalido/s' }
+    // });
   }
 
 }

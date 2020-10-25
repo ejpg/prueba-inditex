@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -12,7 +12,6 @@ export class LoginService {
   get users(): User[] {
     return localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
   }
-
 
   get loggedInUser(): User {
     return localStorage.getItem('loggedInUser') ? JSON.parse(localStorage.getItem('loggedInUser')) : null;
@@ -50,5 +49,4 @@ export class LoginService {
       }
     })
   }
-
 }

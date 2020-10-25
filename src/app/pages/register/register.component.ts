@@ -1,22 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 import { LoginService } from 'src/app/services/login.service';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
     private loginService: LoginService,
-    private router: Router,
-    private dialog: MatDialog
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -40,8 +37,8 @@ export class RegisterComponent implements OnInit {
   }
 
   showDuplicatedUserError() { 
-    const dialogRef = this.dialog.open(ErrorDialogComponent, {
-      data: { message: 'El usuario ya existe' }
-    });
+    // const dialogRef = this.dialog.open(ErrorDialogComponent, {
+    //   data: { message: 'El usuario ya existe' }
+    // });
   }
 }
