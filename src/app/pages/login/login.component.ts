@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
   public form: FormGroup;
+  public showInvalidUserError = false;
 
   constructor(
     private loginService: LoginService,
@@ -22,22 +23,16 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
-      username: new FormControl(),
-      password: new FormControl()
+      username: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.required)
     });
   }
 
   login() {
     this.loginService.login(this.form.value).subscribe({
       complete: () => this.router.navigate(['/ships']),
-      error: () => this.showInvalidUserError()
+      error: () => this.showInvalidUserError = true
     });
-  }
-
-  showInvalidUserError() { 
-    // const dialogRef = this.dialog.open(ErrorDialogComponent, {
-    //   data: { message: 'Usuario y/o contraseña invalido/s' }
-    // });
   }
 
 }

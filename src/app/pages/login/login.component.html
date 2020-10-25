@@ -10,7 +10,12 @@
                     <label>Contraseña</label>
                     <input type="password" class="form-control" formControlName="password">
                 </div>
-                <button class="btn btn-primary float-right ml-2" (click)="login()">Login</button>
+                <p *ngIf="showInvalidUserError">
+                    <ngb-alert type="danger" (close)="showInvalidUserError = false">
+                        Usuario y/o contraseña incorrecto/s.
+                    </ngb-alert>
+                </p>
+                <button class="btn btn-primary float-right ml-2" (click)="login()" [disabled]="form.invalid">Login</button>
                 <button class="btn btn-primary float-right" routerLink="/register">Registro</button>
             </form>
         </div>

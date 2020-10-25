@@ -49,4 +49,8 @@ export class LoginService {
       }
     })
   }
+
+  logout() {
+    localStorage.removeItem('loggedInUser');
+  }
 }

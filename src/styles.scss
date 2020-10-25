@@ -2,3 +2,36 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+.banner {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #000;
+    background-position: 0% 0%;
+    height: 12rem;
+    box-shadow: 0px 4px 9px 0px black;
+
+    h1 {
+        font-size: 1.7rem;
+        color: #FFF;
+    }
+    h5 {
+        font-size: 1.1rem;
+        color: #FFF;
+    }
+    .avatar {
+        border: 2px solid #FFF !important;
+        overflow: hidden;
+        height: 150px;
+        width: 150px;
+        margin: auto;
+        img {
+            min-width: 100%;
+            min-height: 100%;
+        }
+    }
+}
+
+.btn {
+    border-radius: 0;
+}

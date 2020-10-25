@@ -17,8 +17,14 @@ export class ShipsComponent implements OnInit {
   ngOnInit() {
     this.shipsService.getShips().subscribe(ships => {
       this.ships = ships;
+    });
+  }
 
-      console.log('ships', ships);
+  loadMore() {
+    this.shipsService.getMoreShips(this.ships.next).subscribe(ships => {
+      ships.results = [ ...this.ships.results, ...ships.results ];
+
+      this.ships = ships;
     });
   }
 

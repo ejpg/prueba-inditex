@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class RegisterComponent implements OnInit {
   public form: FormGroup;
+  public showDuplicatedUserError = false;
 
   constructor(
     private loginService: LoginService,
@@ -22,23 +23,17 @@ export class RegisterComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
-      name: new FormControl(),
-      lastname: new FormControl(),
-      username: new FormControl(),
-      password: new FormControl()
+      name: new FormControl(null, Validators.required),
+      lastname: new FormControl(null, Validators.required),
+      username: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.required)
     });
   }
 
   save() {
     this.loginService.register(this.form.value).subscribe({
       complete: () => this.router.navigate(['/login']),
-      error: () => this.showDuplicatedUserError()
+      error: () => this.showDuplicatedUserError = true
     });
-  }
-
-  showDuplicatedUserError() { 
-    // const dialogRef = this.dialog.open(ErrorDialogComponent, {
-    //   data: { message: 'El usuario ya existe' }
-    // });
   }
 }

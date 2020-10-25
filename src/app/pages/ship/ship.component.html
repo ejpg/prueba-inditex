@@ -1,0 +1,96 @@
+<div class="container-fuild"  *ngIf="ship">
+    <div class="row banner pt-4">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="avatar rounded-circle">
+                        <img class="card-img-top" src="https://starwars-visualguide.com/assets/img/starships/{{id}}.jpg" onError="this.src='/assets/img/no-image.jpg'" alt="Card image cap">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <h1>{{ ship.name }}</h1>
+                    <h5 class="font-weight-light mt-4"><strong>Modelo:</strong> {{ ship.model }}</h5>
+                    <h5 class="font-weight-light"><strong>Fabricante:</strong> {{ ship.manufacturer }}</h5>
+                    <h5 class="font-weight-light"><strong>Clase:</strong> {{ ship.starship_class }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <div class="col-sm offset-sm-1">
+            <h2>Películas</h2>
+        </div>
+    </div>
+    <div class="row py-4">
+        <div class="col-sm-10 offset-sm-1">
+            <div class="row">
+                <div class="col-sm-2 film text-center mb-3" *ngFor="let film of ship.films">
+                    <div class="px-2 py-5">
+                        <h4 class="pb-1">StarWars {{film.episode_id}}</h4>
+                        <h5>{{ film.title }}</h5>
+                        <h5>({{ film.release_date }})</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm offset-sm-1">
+            <h2>Especificaciones</h2>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <div class="col-sm-10 offset-sm-1">
+            <div class="row">
+                <div class="col-sm-3 attribute text-center mb-3">
+                    <div class="p-5">
+                        <h5><strong>MGLT</strong></h5>
+                        <h4>{{ship.MGLT}}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 attribute text-center mb-3">
+                    <div class="p-5">
+                        <h5><strong>Capacidad de carga</strong></h5>
+                        <h4>{{ship.cargo_capacity}}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 attribute text-center mb-3">
+                    <div class="p-5">
+                        <h5><strong>Consumibles</strong></h5>
+                        <h4>{{ship.consumables}}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 attribute text-center mb-3">
+                    <div class="p-5">
+                        <h5><strong>Costo en créditos</strong></h5>
+                        <h4>{{ship.cost_in_credits}}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 attribute text-center mb-3">
+                    <div class="p-5">
+                        <h5><strong>Tripulación</strong></h5>
+                        <h4>{{ship.crew}}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 attribute text-center mb-3">
+                    <div class="p-5">
+                        <h5><strong>Pasajeros</strong></h5>
+                        <h4>{{ship.passengers}}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 attribute text-center mb-3">
+                    <div class="p-5">
+                        <h5><strong>Largo</strong></h5>
+                        <h4>{{ship.length}}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 attribute text-center mb-3">
+                    <div class="p-5">
+                        <h5><strong>Calificación de hiperimpulsor</strong></h5>
+                        <h4>{{ship.hyperdrive_rating}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
