@@ -14,7 +14,7 @@ export class ShipsService {
   ) { }
 
   getShips(): Observable<any> {
-    return this.http.get('https://swapi.dev/api/starships/').pipe(
+    return this.http.get('https://swapi.dev/api/starships').pipe(
       map(this.parseShips)
     );
   }
