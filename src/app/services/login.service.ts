@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  public user = new BehaviorSubject(null);
 
-  constructor() { }
+  constructor() {
+    if (localStorage.getItem('loggedInUser')) {
+      this.user.next(JSON.parse(localStorage.getItem('loggedInUser')));
+    }
+  }
 
   get users(): User[] {
     return localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
-  }
-
-  get loggedInUser(): User {
-    return localStorage.getItem('loggedInUser') ? JSON.parse(localStorage.getItem('loggedInUser')) : null;
   }
 
   login(loginData: User) {
@@ -24,6 +25,7 @@ export class LoginService {
 
       if (user) {
         localStorage.setItem('loggedInUser', JSON.stringify(user));
+        this.user.next(JSON.stringify(user));
 
         observer.complete();
       } else {
@@ -52,5 +54,7 @@ export class LoginService {
 
   logout() {
     localStorage.removeItem('loggedInUser');
+
+    this.user.next(null);
   }
 }

@@ -18,6 +18,11 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loginService.user.subscribe(user => {
+      if (user) {
+        this.router.navigate(['/ships']);
+      }
+    });
     this.initForm();
   }
 

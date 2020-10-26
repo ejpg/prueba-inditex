@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShipComponent } from './pages/ship/ship.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ExamplePageComponent } from './pages/example-page/example-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
     RegisterComponent,
     ShipsComponent,
     ShipComponent,
-    HeaderComponent
+    HeaderComponent,
+    ExamplePageComponent
   ],
   imports: [
     BrowserModule,
